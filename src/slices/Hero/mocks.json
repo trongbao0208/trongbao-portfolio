@@ -17,6 +17,18 @@
 				"__TYPE__": "FieldContent",
 				"value": "education",
 				"type": "Text"
+			},
+			"button_resume_text": {
+				"__TYPE__": "FieldContent",
+				"value": "correctly",
+				"type": "Text"
+			},
+			"button_resume_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
 			}
 		},
 		"items": []

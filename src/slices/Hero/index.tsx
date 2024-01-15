@@ -7,6 +7,7 @@ import { SliceComponentProps } from "@prismicio/react";
 import { gsap } from "gsap";
 import Bounded from "@/components/Bounded";
 import Shapes from "./Shapes";
+import Button from "@/components/Button";
 
 /**
  * Props for `Hero`.
@@ -55,6 +56,21 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         scale: 1,
         ease: "elastic.out(1,0.3)",
       })
+
+      tl.fromTo(".resume", 
+      {
+        x: -100,
+        y: 0,
+        opacity: 0,
+        scale: 1.2
+      }, 
+      {
+        x: 0,
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        ease: "power4.out",
+      })
     }, component)
     return () => ctx.revert()
   }, []);
@@ -90,8 +106,14 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               {renderLetters(slice.primary.last_name, "last")}
             </span>
           </h1>
-          <span className="job-title block bg-gradient-to-tr from-yellow-500 via-yellow-200 to-yellow-500 bg-clip-text text-2xl font-bold uppercase tracking-[.2em] text-transparent opacity-0 md:text-4xl">
+          <span className="job-title block bg-gradient-to-tr from-red-500 from-red-200 to-orange-500 bg-clip-text text-2xl font-bold uppercase tracking-[.2em] text-transparent opacity-0 md:text-4xl">
             {slice.primary.tag_line}
+          </span>
+          <span
+            className="resume block mt-8 opacity-0 md:prose-xl"
+          >
+            <Button linkField={slice.primary.button_resume_link} label={slice.primary.button_resume_text}/>
+
           </span>
         </div>
       </div>

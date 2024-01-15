@@ -81,10 +81,17 @@ function Geometries() {
         }),
     ]
 
+    const soundEffects = [
+        new Audio("/sounds/soundEffect1.ogg"),
+        new Audio("/sounds/soundEffect2.ogg"),
+        new Audio("/sounds/soundEffect3.ogg"),
+    ]
+
     return geometries.map(({position, r, geometry}) => (
         <Geometry
             key={JSON.stringify(position)}
             position={position.map((p)=>p*2)}
+            soundEffects={soundEffects}
             geometry={geometry}
             materials={materials}
             r={r}
@@ -95,7 +102,7 @@ function Geometries() {
     ))
 }
 
-function Geometry({r, position, geometry, materials}){
+function Geometry({r, position, geometry, materials, soundEffects}){
     const meshRef = useRef()
     const [visible, setVisible] = useState(false)
 
@@ -107,6 +114,8 @@ function Geometry({r, position, geometry, materials}){
 
     function handleClick(e){
         const mesh = e.object
+
+        gsap.utils.random(soundEffects).play()
 
         gsap.to(mesh.rotation, {
             x: `+=${gsap.utils.random(0,2)}`,
@@ -152,8 +161,8 @@ function Geometry({r, position, geometry, materials}){
         >
             <Float
                 speed={5 * r}
-                rotationIntensity={6*r}
-                floatIntensity={5 * r}
+                rotationIntensity={20*r}
+                floatIntensity={10 * r}
             >
                 <mesh
                     geometry={geometry}

@@ -32,6 +32,21 @@
             "label": "Tag Line",
             "placeholder": ""
           }
+        },
+        "button_resume_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button Resume Text",
+            "placeholder": ""
+          }
+        },
+        "button_resume_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button Resume Link",
+            "placeholder": "",
+            "select": null
+          }
         }
       },
       "items": {}
